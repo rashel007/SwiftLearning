@@ -106,3 +106,85 @@ for item in myArray[...2] {
     print(item) // prints 1,2,3
 }
 ```
+
+### init , failable init, convenience init
+
+```swift
+
+// Init 
+
+struct Person {
+    let name: String
+    let age: Int
+    let designation: String
+}
+
+let person = Person(name: "Perosn", age: 30, designation: "iOS Engineer")
+
+struct Person2 {
+    let name: String
+    let age: Int
+    let designation: String
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+        designation = ""
+    }
+}
+
+let person2 = Person2(name: "Perosn 2", age: 30)
+```
+
+
+```swift
+
+// failable init
+
+struct Item {
+    let name: String
+    let price: Int
+    let quantity: Int
+    
+    init?(name: String, price: Int, quantity: Int) {
+        
+        guard quantity < 0 else {
+            return nil
+        }
+        
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+    }
+}
+```
+
+
+```swift
+// convenience init
+
+class Item2 {
+    var name: String
+    var price: Int
+    var quantity: Int
+    
+    init(name: String, price: Int, quantity: Int) {
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+    }
+//
+    init(name : String, price: Int) {
+        self.name = name
+        self.price = price
+        self.quantity = 1
+    }
+    
+    convenience init(name: String) {
+        self.init(name: name, price : 1, quantity : 1)
+    }
+}
+
+let item2 = Item2(name: "", price: 2)
+```
+
