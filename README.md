@@ -188,3 +188,9 @@ class Item2 {
 let item2 = Item2(name: "", price: 2)
 ```
 
+
+
+
+### Useful Links
+1. [Swift Documentation](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
+2. [Code Cat Swift tutorial](https://www.youtube.com/watch?v=0HPOxthY6q0&list=PLb5R4QC2DtFv3MvfG42Cd5La34Hwj4pY6&index=1)
