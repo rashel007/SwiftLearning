@@ -188,6 +188,101 @@ class Item2 {
 let item2 = Item2(name: "", price: 2)
 ```
 
+### Computed property
+
+> Computed property are those which value are not set directly. We set the value by some calculation
+
+```swift
+struct Person{
+    var monthlySalary: Int
+    var yearlySalary : Int {
+        get {
+            return monthlySalary * 12
+        }
+    }
+}
+
+let person = Person(monthlySalary: 1000)
+person.yearlySalary // this will return 120000
+
+```
+
+
+### Property Wrapper
+
+
+```swift
+extension String {
+    
+    func isValidEmail()-> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+         return emailPred.evaluate(with: self)
+    }
+}
+
+
+@propertyWrapper
+struct EmailValidationWrapper {
+    
+    var value: String
+    var wrappedValue: String {
+       
+        get{
+            return isValidEmail(email: value) ? value : String()
+        }
+        
+        set{
+            value = newValue
+        }
+    }
+    
+    
+    init(emailValue: String) {
+        value = emailValue
+    }
+    
+    
+    private func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+         return emailPred.evaluate(with: email)
+    }
+}
+
+
+struct User {
+    
+    var name: String
+    @EmailValidationWrapper var email: String
+    
+    
+   private func validate() -> Bool {
+        if name.isEmpty || email.isEmpty {
+            return false
+        }
+        
+        return true
+    }
+    
+    
+    func register() {
+        
+        if validate() {
+            print("done register")
+        }else {
+            print("Error")
+        }
+    }
+}
+
+
+let user = User(name: "test", email: EmailValidationWrapper(emailValue: "test@gmail.com"))
+
+```
+
 
 
 
