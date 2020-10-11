@@ -283,6 +283,42 @@ let user = User(name: "test", email: EmailValidationWrapper(emailValue: "test@gm
 
 ```
 
+### associatedtype
+```swift
+struct Movie{
+    let name:String
+}
+
+struct User {
+    let firstname:String
+}
+
+
+protocol WebService: class {
+    
+    associatedtype Model
+    
+    func getAll(url: URL, completion: (Result<Model, Error>) -> Void)
+    
+}
+
+
+class MovieService: WebService {
+    typealias Model = Movie
+    
+    func getAll(url: URL, completion: (Result<Movie, Error>) -> Void) {
+        
+    }
+}
+
+
+class UserService: WebService {
+    
+    func getAll(url: URL, completion: (Result<User, Error>) -> Void) {
+        
+    }
+}
+```
 
 
 
