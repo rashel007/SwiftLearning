@@ -320,6 +320,61 @@ class UserService: WebService {
 }
 ```
 
+### Protocol Extention
+
+```swift
+protocol Styling{
+    func changeColor()
+}
+
+extension Styling {
+    func changeColor() {
+        print("Changed color to WHITE")
+    }
+}
+
+class MyButton: Styling  {
+    
+}
+
+class MyTextField: Styling {
+    func changeColor() {
+        print("Changed color to RED")
+    }
+}
+
+let button = MyButton()
+button.changeColor() // will print default value WHITE
+let textField = MyTextField()
+textField.changeColor() // will print overridien value RED
+```
+
+### Generic Protocol with associatetype 
+
+```swift 
+protocol MyGenericProtocol{
+    associatedtype InputType
+    associatedtype ReturnType
+    
+    func multiply(value: InputType) -> ReturnType
+}
+
+class Test1: MyGenericProtocol {
+    
+    typealias InputType = Int
+    typealias ReturnType = Int
+    
+    func multiply(value: Int) -> Int {
+        return value * value
+    }
+}
+
+class Test2: MyGenericProtocol {
+    func multiply(value: Int) -> Int {
+        return value * value
+    }
+}
+```
 
 
 ### Useful Links
