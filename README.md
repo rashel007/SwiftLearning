@@ -281,6 +281,42 @@ struct User {
 
 let user = User(name: "test", email: EmailValidationWrapper(emailValue: "test@gmail.com"))
 
+
+// another example
+@propertyWrapper
+class Prefixer{
+    
+    var wrappedValue: Int
+    var prefixer: String?
+    var projectedValue: String {
+        guard let prefixer = prefixer else {
+            return"\(wrappedValue)"
+        }
+        
+        return "\(prefixer)\(wrappedValue)"
+    }
+    
+    init(prefixer: String? = nil ,defaultValue: Int = 0) {
+        self.wrappedValue = defaultValue
+        self.prefixer = prefixer
+    }
+}
+
+class Product{
+    var name: String
+    @Prefixer(prefixer: "$") var price: Int
+    
+    init(name: String, price: Int){
+        self.name = name
+        self.price = price
+    }
+}
+
+let item = Product(name: "Book", price: 22)
+
+print(item.$price) // $price will return the projectedValue && price will return the wrappedValue
+
+
 ```
 
 ### associatedtype
@@ -380,3 +416,4 @@ class Test2: MyGenericProtocol {
 ### Useful Links
 1. [Swift Documentation](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
 2. [Code Cat Swift tutorial](https://www.youtube.com/watch?v=0HPOxthY6q0&list=PLb5R4QC2DtFv3MvfG42Cd5La34Hwj4pY6&index=1)
+3. [Best Resources for Advanced iOS developer](https://medium.com/flawless-app-stories/best-resources-for-advanced-ios-developer-swift-ade30374593d)
