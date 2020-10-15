@@ -440,6 +440,38 @@ class Test2: MyGenericProtocol {
 }
 ```
 
+### Higher Order Function
+
+#### Map & CompactMap
+```swift
+struct User{
+    let name: String
+    let age: Int
+}
+
+let users = [
+    User(name: "User 1", age: 20),
+    User(name: "User 2", age: 30),
+    User(name: "User 3", age: 40)
+]
+
+//let userNames = users.map { (user) -> String in
+//    return user.name
+//}
+
+let userNames = users.map { $0.name }
+
+
+print(userNames)
+
+let values = ["1", "two", "3", "four", "5"]
+
+let intValues = values.map{ Int($0) } // accept nil value
+print(intValues)
+let intValuesWithoutNil = values.compactMap{ Int($0) } // dont accept nil value
+print(intValuesWithoutNil)
+```
+
 
 ### Useful Links
 1. [Swift Documentation](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
