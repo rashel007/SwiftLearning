@@ -2,20 +2,20 @@
 New things i learn about swift programming language
 
 ## Table Of Contents
-[Toupls](#toupls)<br/>
-[Higher Order Function](#higherorderfunction)<br/>
-[New way of handling getter setter](#gettersetter)<br/>
-[Closed Range Operator](#closedrangedoperators)<br/>
-[init, failable init, convenience init](#init)<br/>
-[Computed Property](#computedproperty)<br/>
-[Property Wrapper](#propertywrapper)<br/>
-[Associatedtype](#associatedtype)<br/>
-[Protocol Extention](#protocolextention)<br/>
+1. [Toupls](#toupls)<br/>
+2. [Higher Order Function](#higherorderfunction)<br/>
+3. [New way of handling getter setter](#gettersetter)<br/>
+4. [Closed Range Operator](#closedrangedoperators)<br/>
+5. [init, failable init, convenience init](#init)<br/>
+6. [Computed Property](#computedproperty)<br/>
+7. [Property Wrapper](#propertywrapper)<br/>
+8. [Associatedtype](#associatedtype)<br/>
+9. [Protocol Extention](#protocolextention)<br/>
 
 
 
-<a name="toupls"/>
-### Toupls
+
+### Toupls <a name="toupls"/>
 > Tuples group multiple values into a single compound value. The values within a tuple can be of any type and don’t have to be of the same type as each other.
 
 ```swift
@@ -36,8 +36,8 @@ print(message) // prints "Not Found"
 
 ```
 
-<a name="gettersetter"/>
-### New way of handling getter setter
+
+### New way of handling getter setter <a name="gettersetter"/>
 
 ```swift
 class Person {
@@ -78,8 +78,8 @@ let person2 = Person2(name: "Person 2", age: 24)
 print(person2.name)
 ```
 
-<a name="closedrangedoperators"/>
-### Closed Range Operator
+
+### Closed Range Operator <a name="closedrangedoperators"/>
 > The closed range operator (a...b) defines a range that runs from a to b, and includes the values a and b. The value of a must not be greater than b.
 
 ```swift
@@ -118,8 +118,8 @@ for item in myArray[...2] {
 }
 ```
 
-<a name="init"/>
-### init , failable init, convenience init
+
+### init , failable init, convenience init. <a name="init"/>
 
 ```swift
 
@@ -199,8 +199,8 @@ class Item2 {
 
 let item2 = Item2(name: "", price: 2)
 ```
-<a name="computedproperty"/>
-### Computed property
+
+### Computed property <a name="computedproperty"/>
 
 > Computed property are those which value are not set directly. We set the value by some calculation
 
@@ -219,8 +219,8 @@ person.yearlySalary // this will return 120000
 
 ```
 
-<a name="propertywrapper"/>
-### Property Wrapper
+
+### Property Wrapper <a name="propertywrapper"/>
 
 
 ```swift
@@ -359,8 +359,8 @@ settings.language = "bn"
 print(settings.language) // bn
 ```
 
-<a name="associatedtype"/>
-### Associatedtype
+
+### Associatedtype <a name="associatedtype"/>
 ```swift
 struct Movie{
     let name:String
@@ -397,8 +397,8 @@ class UserService: WebService {
 }
 ```
 
-<a name="protocolextention"/>
-### Protocol Extention
+
+### Protocol Extention <a name="protocolextention"/>
 
 ```swift
 protocol Styling{
@@ -453,8 +453,8 @@ class Test2: MyGenericProtocol {
     }
 }
 ```
-<a name="higherorderfunction"/>
-### Higher Order Function
+
+### Higher Order Function <a name="higherorderfunction"/>
 
 #### Map & CompactMap
 ```swift
