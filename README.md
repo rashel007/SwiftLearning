@@ -317,6 +317,34 @@ let item = Product(name: "Book", price: 22)
 print(item.$price) // $price will return the projectedValue && price will return the wrappedValue
 
 
+
+// use in userdefaults
+
+@propertyWrapper
+class UserSettings<T>{
+    
+    var defaults = UserDefaults.standard
+    
+    var wrappedValue: T {
+        set { defaults.set(newValue, forKey: key) }
+        get { defaults.value(forKey: key) as? T ?? defaultValue }
+    }
+    var defaultValue: T
+    var key: String
+    init(_ key: String,_ defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+}
+
+struct Settings {
+    @UserSettings("language", "en") var language: String
+}
+
+let settings  = Settings()
+print(settings.language)  // en
+settings.language = "bn"
+print(settings.language) // bn
 ```
 
 ### associatedtype
