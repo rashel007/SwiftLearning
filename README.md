@@ -11,7 +11,7 @@ New things i learn about swift programming language
 7. [Property Wrapper](#propertywrapper)<br/>
 8. [Associatedtype](#associatedtype)<br/>
 9. [Protocol Extention](#protocolextention)<br/>
-10 [Closure](#closure)<br/>
+10. [Closure](#closure)<br/>
 
 
 
@@ -519,6 +519,62 @@ var addTwoNumber3: (Int, Int) -> Int = {
 
 let add3 = addTwoNumber3(20,20)
 print(add3)
+```
+
+### Function Call Sequence in closure 
+
+```swift 
+// function call sequence in closure
+
+func printGoodMorningMessage(isMorning: Bool, name: String){
+    
+    if isMorning {
+        print("Good Morning \(name)")
+    }
+}
+
+//printGoodMorningMessage(isMorning: true, name: "EA Rashel") // this will print Good morning message
+//printGoodMorningMessage(isMorning: false, name: "Mark Zugarburg") // this will print nothing
+
+func assignName(name: String) -> String {
+    print("assign name \(name)")
+    return name
+}
+
+//printGoodMorningMessage(isMorning: true, name: assignName(name: "EA Rashel 2"))
+//printGoodMorningMessage(isMorning: false, name: assignName(name: "Mark Zugarburg 2"))
+
+/**
+ this is the output for above code
+ 
+ assign name EA Rashel 2
+ Good Morning EA Rashel 2
+ assign name Mark Zugarburg 2
+ */
+
+func printGoodMorningMessage2(isMorning : Bool, name: () -> String ){
+    
+    if isMorning {
+        print("Good Morning 2 \(name())")
+    }
+}
+
+
+printGoodMorningMessage2(isMorning: true) { () -> String in
+    return assignName(name: "EA Rashel 3")
+}
+
+
+printGoodMorningMessage2(isMorning: false) { () -> String in
+    return assignName(name: "Mark Zugarburg 3")
+}
+
+/**
+ this is the output for above code
+ 
+ assign name EA Rashel 3
+ Good Morning EA Rashel 3
+ */
 ```
 
 
