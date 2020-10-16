@@ -11,6 +11,7 @@ New things i learn about swift programming language
 7. [Property Wrapper](#propertywrapper)<br/>
 8. [Associatedtype](#associatedtype)<br/>
 9. [Protocol Extention](#protocolextention)<br/>
+10 [Closure](#closure)<br/>
 
 
 
@@ -484,6 +485,40 @@ let intValues = values.map{ Int($0) } // accept nil value
 print(intValues)
 let intValuesWithoutNil = values.compactMap{ Int($0) } // dont accept nil value
 print(intValuesWithoutNil)
+```
+
+
+### Closure <a name="closure"/>
+```swift
+// closure
+func addition(num1: Int, num2: Int) -> Int{
+    return num1 + num2
+}
+
+var addTwoNumber = addition
+
+
+let add = addition(num1: 10, num2: 30)
+print(add)
+
+let add1 = addTwoNumber(10,30)
+print(add1)
+
+
+var addTwoNumber2: (Int, Int) -> Int = {
+    (num1, num2) in
+    return num1 + num2
+}
+
+let add2 = addTwoNumber2(20,20)
+print(add2)
+
+var addTwoNumber3: (Int, Int) -> Int = {
+    return $0 + $1
+}
+
+let add3 = addTwoNumber3(20,20)
+print(add3)
 ```
 
 
