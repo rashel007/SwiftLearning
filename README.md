@@ -12,6 +12,7 @@ New things i learn about swift programming language
 8. [Associatedtype](#associatedtype)<br/>
 9. [Protocol Extention](#protocolextention)<br/>
 10. [Closure](#closure)<br/>
+11. [Mutating Function](#mutating)<br/>
 
 
 
@@ -575,6 +576,50 @@ printGoodMorningMessage2(isMorning: false) { () -> String in
  assign name EA Rashel 3
  Good Morning EA Rashel 3
  */
+```
+
+### Mutating Function <a name="mutating"/>
+
+```swift
+class Test{
+    
+    var items = [Int]()
+    
+    func push(value: Int) {
+        items.append(value)
+    }
+    
+    func pop() -> Int? {
+        if !items.isEmpty {
+            return items.removeLast()
+        }
+        return nil
+    }
+}
+
+// struct values are immutable by default
+// to chnage its value we need to make it mutable first
+struct TestMutating {
+    
+    var items = [Int]()
+    
+    mutating func push(value: Int) {
+        items.append(value)
+    }
+    
+    mutating func pop () -> Int? {
+        
+        if !items.isEmpty {
+            return items.removeLast()
+        }
+        
+        return nil
+    }
+}
+
+var mutate = TestMutating(items: [1,2,3,4])
+mutate.pop()
+mutate.push(value: 5)
 ```
 
 
