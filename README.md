@@ -13,6 +13,7 @@ New things i learn about swift programming language
 9. [Protocol Extention](#protocolextention)<br/>
 10. [Closure](#closure)<br/>
 11. [Mutating Function](#mutating)<br/>
+12. [Lazy](#lazy)<br/>
 
 
 
@@ -202,6 +203,41 @@ class Item2 {
 let item2 = Item2(name: "", price: 2)
 ```
 
+### Lazy <a name="lazy"/>
+
+```swift
+// lazy
+
+struct Calculate {
+    static func havyCalculation() -> Int{
+        var mArray = [Int]()
+        
+        for item in 1...4000 {
+            mArray.append(item)
+        }
+        
+        return mArray.last!
+    }
+}
+
+struct Person{
+    let name: String
+    let age: Int
+    lazy var calculation = {
+       return Calculate.havyCalculation()
+    }()
+    
+    lazy var showPerson = {
+        return "Name is \(name) , Age is \(age)"
+    }()
+}
+
+var person = Person(name: "EA Rashel", age: 100)
+print(person.showPerson) // Name is EA Rashel , Age is 100
+print(person.calculation) // it will calculate first time and store it
+print(person.calculation) // this time is will return the stored value
+```
+
 ### Computed property <a name="computedproperty"/>
 
 > Computed property are those which value are not set directly. We set the value by some calculation
@@ -220,6 +256,10 @@ let person = Person(monthlySalary: 1000)
 person.yearlySalary // this will return 120000
 
 ```
+
+*** Computed property will calculate every time it is called. where as lazy property will calculate first time and store the value and return the value if called 2nd time. 
+
+*** Lazy is not thread safe
 
 
 ### Property Wrapper <a name="propertywrapper"/>
