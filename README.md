@@ -14,6 +14,7 @@ New things i learn about swift programming language
 10. [Closure](#closure)<br/>
 11. [Mutating Function](#mutating)<br/>
 12. [Lazy](#lazy)<br/>
+13. [where keyword](#where)<br/>
 
 
 
@@ -660,6 +661,73 @@ struct TestMutating {
 var mutate = TestMutating(items: [1,2,3,4])
 mutate.pop()
 mutate.push(value: 5)
+```
+
+### where keyword <a name="where"/>
+
+```swift
+// where
+// where is a powerful keyword in swift to easily filter out value.
+// usage of where
+
+// in enums
+
+enum Action{
+    case createUser(age: Int)
+    case createPost
+}
+
+func createAction(action: Action) {
+    switch action {
+    case .createUser(let age) where age < 30:
+        print("User is young")
+    case .createUser:
+        print("User is aged")
+    default:
+        print("Default")
+
+    }
+}
+
+createAction(action: .createUser(age: 20)) // User is young
+createAction(action: .createUser(age: 40)) // User is aged
+
+// in for-loop. printing even numbers
+
+let items = [0,1,2,3,4,5,6,7,8,9,10]
+
+for item in items where item % 2 == 0 {
+    print(item) // 0 ,2, 4, 6, 8, 10
+}
+
+
+// in protocol extention
+
+extension Array where Element == Int {
+    func printAvgNumber() {
+        let total = reduce(0, +)
+        let avg  = total / count
+        print("Avg is : \(avg)")
+    }
+}
+
+items.printAvgNumber() // 5
+
+// in first
+
+let names = ["john", "adam", "jerry", "alan"]
+
+let firstAName = names.first { (name) -> Bool in
+    return name.first == "a"
+}
+
+print(firstAName) // adam
+
+let cehckIfAdamExists = names.contains (where: { (name) -> Bool in
+    return name == "adam"
+})
+
+print(cehckIfAdamExists) // true
 ```
 
 
