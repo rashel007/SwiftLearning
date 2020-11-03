@@ -735,4 +735,4 @@ print(cehckIfAdamExists) // true
 1. [Swift Documentation](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
 2. [Code Cat Swift tutorial](https://www.youtube.com/watch?v=0HPOxthY6q0&list=PLb5R4QC2DtFv3MvfG42Cd5La34Hwj4pY6&index=1)
 3. [Best Resources for Advanced iOS developer](https://medium.com/flawless-app-stories/best-resources-for-advanced-ios-developer-swift-ade30374593d)
-4. [Avander lee (swiftlee)] (https://www.avanderlee.com/category/swift/)
+4. [Avander lee (swiftlee)](https://www.avanderlee.com/category/swift/)
