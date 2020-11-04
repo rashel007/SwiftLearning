@@ -15,6 +15,7 @@ New things i learn about swift programming language
 11. [Mutating Function](#mutating)<br/>
 12. [Lazy](#lazy)<br/>
 13. [where keyword](#where)<br/>
+14. [Error Handaling](#error)<br/>
 
 
 
@@ -728,6 +729,41 @@ let cehckIfAdamExists = names.contains (where: { (name) -> Bool in
 })
 
 print(cehckIfAdamExists) // true
+```
+
+### Error handaling <a name="error"/>
+
+```swift
+enum CustomError: Error {
+    case NameFieldEmpty(msg: String)
+    case PhoneFieldEmpty(msg: String)
+    case TestError
+}
+
+func createUser(name: String, phone: String) throws {
+    if name.isEmpty {
+        throw CustomError.NameFieldEmpty(msg: "Name field is empty")
+    }
+    
+    if phone.isEmpty{
+        throw CustomError.PhoneFieldEmpty(msg: "Phone Field is empty")
+    }
+    
+    print("User Created. Name \(name)")
+}
+
+do {
+    try createUser(name: "asda", phone: "asdasd")
+}catch CustomError.NameFieldEmpty(let msg) {
+    print(msg)
+}catch CustomError.PhoneFieldEmpty(let msg) {
+    print(msg)
+} catch is CustomError{
+    print("Other error")
+} catch (_) {
+    print("No Custom Error.")
+}
+
 ```
 
 
