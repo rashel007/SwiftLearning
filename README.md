@@ -16,6 +16,7 @@ New things i learn about swift programming language
 12. [Lazy](#lazy)<br/>
 13. [where keyword](#where)<br/>
 14. [Error Handaling](#error)<br/>
+15. [Type Casting](#typecasting)<br/>
 
 
 
@@ -764,6 +765,73 @@ do {
     print("No Custom Error.")
 }
 
+```
+
+### Type Casting <a name="typecasting"/>
+
+> Type casting in Swift is implemented with the is and as operators. These two operators provide a simple and expressive way to check the type of a value or cast a value to a different type.
+
+
+```swift
+class MediaItem{
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class MovieItem: MediaItem{
+    var director: String
+    
+    init(name: String, director: String) {
+        self.director = director
+        super.init(name: name)
+    }
+}
+
+class SongItem: MediaItem {
+    var artist: String
+    init(name: String, artist: String) {
+        self.artist = artist
+        super.init(name: name)
+    }
+}
+
+let library = [
+    MovieItem(name: "Movie 1", director: "Director 1"),
+    SongItem(name: "Song 1", artist: "Artist 1"),
+    MovieItem(name: "Movie 2", director: "Director 2")
+]
+
+var movieItemCount = 0
+var songItemCount = 0
+
+// type checking
+for item  in library {
+    if item is MovieItem {
+        movieItemCount += 1
+    }else if item is SongItem {
+        songItemCount += 1
+    }
+}
+
+print("Movie item count = \(movieItemCount) , Song item count = \(songItemCount)") // Movie item count = 2 , Song item count = 1
+
+// downcasting
+
+for item in library {
+    if let movie = item as? MovieItem {
+        print("Director: \(movie.director)")
+    }else if let song = item as? SongItem {
+        print("Artist : \(song.artist)")
+    }
+}
+
+/**
+    Director: Director 1
+    Artist : Artist 1
+    Director: Director 2
+**/
 ```
 
 
